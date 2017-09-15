@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SuiteTestWithAnnotations" verbose="10" >
+    <test name="Test with Annotations" >
+        <classes>
+            <class name="homework2.StandartTest" />
+        </classes>
+    </test>
+</suite>
