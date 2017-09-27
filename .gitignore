@@ -4,8 +4,9 @@
 .mtj.tmp/
 
 #directories
-.idea
+.idea/
 target
+build/reports
 
 # Package Files #
 *.jar
