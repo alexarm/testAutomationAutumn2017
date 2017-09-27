@@ -1,11 +1,14 @@
 package homework3;
 
+import com.codeborne.selenide.Selenide;
 import homework3.enums.Ranges;
 import homework3.pages.DatesPage;
 import homework3.pages.DifferentElementsPage;
 import homework3.pages.IndexPage;
 import homework3.util.InitTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -18,7 +21,7 @@ import static homework3.enums.Users.*;
 
 public class InterfaceElementsTests extends InitTest{
 
-    @BeforeClass
+    @BeforeMethod
     public void setup(){
         indexPage = page(IndexPage.class);
         differentElementsPage = page(DifferentElementsPage.class);
@@ -94,6 +97,11 @@ public class InterfaceElementsTests extends InitTest{
         datesPage.setSliders(LEFT_TEST.range, RIGHT_TEST.range);
         datesPage.checkRange(LEFT_TEST.range, RIGHT_TEST.range);
 
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        Selenide.close();
     }
 
 }
