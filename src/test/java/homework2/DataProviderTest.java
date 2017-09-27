@@ -10,14 +10,9 @@ import org.testng.annotations.*;
 
 import java.util.List;
 
-/**
- * Created by aleksandrarmensin on 14.09.17.
- */
 public class DataProviderTest {
 
-    private WebDriver driver;
     private final String TEST_SITE = "https://jdi-framework.github.io/tests";
-
 
     @DataProvider(parallel = true)
     private Object[][] expectedTexts(){
