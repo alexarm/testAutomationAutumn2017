@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import static java.lang.System.setProperty;
+
 /**
  * Created by aleksandrarmensin on 11.09.17.
  */
@@ -37,9 +39,12 @@ public class SeleniumTest {
     private static final String SUBMIT_BUTTON_X_PATH = "//button[contains(text(), 'Submit')]";
     private static final String LOG_RAW_X_PATH = "//ul[contains(@class, 'logs')]/li[1]";
 
+    private String driverPath = "chromedriver";
+
 
     @BeforeMethod
     public void setUp(){
+        setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
         Dimension targetSize = new Dimension(1440, 900);
         driver.manage().window().setSize(targetSize);
