@@ -46,7 +46,7 @@ public class SeleniumTest {
     public void setUp(){
         setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
-        Dimension targetSize = new Dimension(1024, 768);
+        Dimension targetSize = new Dimension(1400, 768);
         driver.manage().window().setSize(targetSize);
     }
 
