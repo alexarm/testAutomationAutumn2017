@@ -3,6 +3,7 @@ package homework3.pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import homework3.enums.HeaderMenu;
 import homework3.enums.ServiceMenus;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -42,6 +43,19 @@ public class Header {
         loginInput.sendKeys(username);
         passwordInput.sendKeys(password);
         signInButton.should(visible).click();
+    }
+
+    public void openMain(Enum<HeaderMenu> page){
+
+    }
+
+    public void open(Enum<ServiceMenus> page){
+        for(SelenideElement serviceMenu: serviceMenus){
+            if (serviceMenu.innerText().equalsIgnoreCase(page.toString())){
+                serviceToggle.click();
+                serviceMenu.click();
+            }
+        }
     }
 
     public void openIndexPage(){

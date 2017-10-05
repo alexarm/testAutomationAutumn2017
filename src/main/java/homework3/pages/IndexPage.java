@@ -17,8 +17,6 @@ import static homework3.enums.TextsAbove.*;
 import static homework3.enums.Users.USER1;
 
 public class IndexPage{
-
-    public Header header = page(Header.class);
     public LeftBar leftBar = page(LeftBar.class);
 
     @FindBy(css = ".icons-benefit")
@@ -29,10 +27,6 @@ public class IndexPage{
 
     public void open(){
         Selenide.open("/");
-    }
-
-    public void login(String username, String password){
-        header.login(username, password);
     }
 
     public void checkLogin(){

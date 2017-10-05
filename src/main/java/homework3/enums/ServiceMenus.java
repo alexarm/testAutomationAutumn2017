@@ -25,4 +25,9 @@ public enum ServiceMenus {
 
         return names;
     }
+
+    @Override
+    public String toString() {
+        return menuName;
+    }
 }

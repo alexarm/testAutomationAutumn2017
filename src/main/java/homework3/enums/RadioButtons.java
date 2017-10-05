@@ -29,4 +29,9 @@ public enum RadioButtons{
 
         return labels;
     }
+
+    @Override
+    public String toString() {
+        return label;
+    }
 }

@@ -12,10 +12,6 @@ import static com.codeborne.selenide.Selenide.page;
 import static homework3.util.CalculateMethods.*;
 
 public class DatesPage {
-    public Header header = page(Header.class);
-    public LeftBar leftBar = page(LeftBar.class);
-    public RightBar rightBar = page(RightBar.class);
-
     @FindBy(css = ".ui-slider-handle:nth-of-type(1)")
     private SelenideElement leftHandle;
 
@@ -40,7 +36,7 @@ public class DatesPage {
     }
 
     public void checkRange(int leftValue, int rightValue){
-        $(".ui-slider-handle:nth-of-type(1)>span").should(text(String.valueOf(leftValue)));
-        $(".ui-slider-handle:nth-of-type(2)>span").should(text(String.valueOf(rightValue)));
+        leftHandle.should(text(String.valueOf(leftValue)));
+        rightHandle.should(text(String.valueOf(rightValue)));
     }
 }

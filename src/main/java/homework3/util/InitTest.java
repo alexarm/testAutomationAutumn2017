@@ -17,8 +17,4 @@ public abstract class InitTest {
         Configuration.baseUrl = "https://jdi-framework.github.io/tests";
     }
 
-    protected IndexPage indexPage;
-    protected DifferentElementsPage differentElementsPage;
-    protected DatesPage datesPage;
-
 }

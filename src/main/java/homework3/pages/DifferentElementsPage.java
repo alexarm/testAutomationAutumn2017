@@ -16,15 +16,12 @@ import static com.codeborne.selenide.Selenide.page;
 import static homework3.enums.CheckBoxes.*;
 
 public class DifferentElementsPage {
-
-    public Header header = page(Header.class);
-    public LeftBar leftBar = page(LeftBar.class);
     public RightBar rightBar = page(RightBar.class);
 
-    @FindBy(css = ".label-checkbox")
+    @FindBy(css = ".label-checkbox>input")
     private ElementsCollection checkBoxes;
 
-    @FindBy(css = ".label-radio")
+    @FindBy(css = ".label-radio>input")
     private ElementsCollection radioButtons;
 
     @FindBy(css = ".colors select")
@@ -33,12 +30,12 @@ public class DifferentElementsPage {
     public void checkElements(){
         checkBoxes.shouldHaveSize(4);
         for (SelenideElement checkBox: checkBoxes){
-            Assert.assertTrue(CheckBoxes.getCheckBoxesLabels().contains(checkBox.getText()));
+            Assert.assertTrue(CheckBoxes.getCheckBoxesLabels().contains(checkBox.closest("label").text()));
         }
 
         radioButtons.shouldHaveSize(4);
         for (SelenideElement radioButton: radioButtons){
-            Assert.assertTrue(RadioButtons.getRadioLabels().contains(radioButton.getText()));
+            Assert.assertTrue(RadioButtons.getRadioLabels().contains(radioButton.closest("label").text()));
         }
 
         selectElement.shouldBe(visible);
@@ -48,16 +45,79 @@ public class DifferentElementsPage {
         }
     }
 
-    public void setSelect(SelenideElement element, Boolean bool){
-        element.setSelected(bool);
+    public void setSelect(Enum element, Boolean bool){
+        if (element.getDeclaringClass().toString().matches(".*\\.enums\\.CheckBoxes$")) {
+            boolean exist = false;
+            SelenideElement setElement = null;
+            for (SelenideElement checkBox : checkBoxes) {
+                if (checkBox.closest("label").text().equalsIgnoreCase(element.toString())) {
+                    exist = true;
+                    setElement = checkBox;
+                    break;
+                }
+            }
+            if (exist){
+                setElement.setSelected(bool);
+            }
+            else {
+                throw new NullPointerException("Element to set not found");
+            }
+        }
+        else if (element.getDeclaringClass().toString().matches(".*\\.enums\\.RadioButtons$")){
+            boolean exist = false;
+            SelenideElement setElement = null;
+            for (SelenideElement radioButton : radioButtons) {
+                if (radioButton.closest("label").text().equalsIgnoreCase(element.toString())) {
+                    exist = true;
+                    setElement = radioButton;
+                    break;
+                }
+            }
+            if (exist){
+                setElement.setSelected(bool);
+            }
+            else {
+                throw new NullPointerException("Element to set not found");
+            }
+        }
+        else {
+            throw new NullPointerException("Element to set not found");
+        }
+
     }
 
-    public void checkSelected(SelenideElement checkBox){
-        checkBox.shouldBe(selected);
+    public void checkSelected(Enum element){
+        if (CheckBoxes.getCheckBoxesLabels().contains(element.toString())) {
+            for (SelenideElement checkBox : checkBoxes) {
+                if (checkBox.closest("label").text().equalsIgnoreCase(element.toString())) {
+                    checkBox.shouldBe(selected);
+                }
+            }
+        }
+        else if (RadioButtons.getRadioLabels().contains(element.toString())){
+            for (SelenideElement radioButton : radioButtons) {
+                if (radioButton.closest("label").text().equalsIgnoreCase(element.toString())) {
+                    radioButton.shouldBe(selected);
+                }
+            }
+        }
     }
 
-    public void checkUnselected(SelenideElement checkBox){
-        checkBox.shouldNotBe(selected);
+    public void checkUnselected(Enum element) {
+        if (CheckBoxes.getCheckBoxesLabels().contains(element.toString())) {
+            for (SelenideElement checkBox : checkBoxes) {
+                if (checkBox.closest("label").text().equalsIgnoreCase(element.toString())) {
+                    checkBox.shouldNotBe(selected);
+                }
+            }
+        }
+        else if (RadioButtons.getRadioLabels().contains(element.toString())){
+            for (SelenideElement radioButton : radioButtons) {
+                if (radioButton.closest("label").text().equalsIgnoreCase(element.toString())) {
+                    radioButton.shouldNotBe(selected);
+                }
+            }
+        }
     }
 
     public void chooseColor(String color){

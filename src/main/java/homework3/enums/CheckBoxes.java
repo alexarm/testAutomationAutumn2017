@@ -7,16 +7,15 @@ import java.util.ArrayList;
 import static com.codeborne.selenide.Selenide.*;
 
 public enum CheckBoxes {
-    WATER($(".label-checkbox:nth-of-type(1) input"), "Water"),
-    EARTH($(".label-checkbox:nth-of-type(2) input"), "Earth"),
-    WIND($(".label-checkbox:nth-of-type(3) input"), "Wind"),
-    FIRE($(".label-checkbox:nth-of-type(4) input"), "Fire");
+    WATER("Water"),
+    EARTH("Earth"),
+    WIND("Wind"),
+    FIRE("Fire"),
+    HUR("Hur");
 
-    public SelenideElement checkBox;
     public String label;
 
-    CheckBoxes(SelenideElement checkBox, String label) {
-        this.checkBox = checkBox;
+    CheckBoxes(String label) {
         this.label = label;
     }
 
@@ -28,5 +27,10 @@ public enum CheckBoxes {
         }
 
         return labels;
+    }
+
+    @Override
+    public String toString() {
+        return label;
     }
 }
