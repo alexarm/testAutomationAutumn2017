@@ -8,11 +8,9 @@ import homework3.pages.DatesPage;
 import homework3.pages.DifferentElementsPage;
 import homework3.pages.Header;
 import homework3.pages.IndexPage;
+import homework3.util.AllureAttachmentListener;
 import homework3.util.InitTest;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
@@ -23,6 +21,7 @@ import static homework3.enums.Ranges.*;
 import static homework3.enums.ServiceMenus.*;
 import static homework3.enums.Users.*;
 
+@Listeners(AllureAttachmentListener.class)
 public class InterfaceElementsTests extends InitTest{
 
     private IndexPage indexPage;

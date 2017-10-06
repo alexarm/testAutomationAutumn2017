@@ -7,9 +7,6 @@ import homework3.pages.IndexPage;
 
 import static com.codeborne.selenide.Selenide.page;
 
-/**
- * Created by aleksandrarmensin on 21.09.17.
- */
 public abstract class InitTest {
 
     public InitTest() {
