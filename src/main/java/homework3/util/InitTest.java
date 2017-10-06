@@ -14,6 +14,7 @@ public abstract class InitTest {
 
     public InitTest() {
         Configuration.browser = "Chrome";
+        Configuration.startMaximized = true;
         Configuration.baseUrl = "https://jdi-framework.github.io/tests";
     }
 
