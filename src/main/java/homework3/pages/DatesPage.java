@@ -3,6 +3,7 @@ package homework3.pages;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
@@ -21,6 +22,7 @@ public class DatesPage {
     @FindBy(css = ".ui-slider")
     private SelenideElement sliderTrack;
 
+    @Step
     public void setSliders(int leftValue, int rightValue){
 
         if(leftValue > Integer.parseInt($(".ui-slider-handle:nth-of-type(2)>span").getText())){
@@ -35,6 +37,7 @@ public class DatesPage {
         }
     }
 
+    @Step
     public void checkRange(int leftValue, int rightValue){
         leftHandle.should(text(String.valueOf(leftValue)));
         rightHandle.should(text(String.valueOf(rightValue)));

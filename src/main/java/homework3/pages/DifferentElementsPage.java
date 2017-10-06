@@ -9,6 +9,7 @@ import homework3.enums.Colors;
 import homework3.enums.RadioButtons;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -27,6 +28,7 @@ public class DifferentElementsPage {
     @FindBy(css = ".colors select")
     public SelenideElement selectElement;
 
+    @Step
     public void checkElements(){
         checkBoxes.shouldHaveSize(4);
         for (SelenideElement checkBox: checkBoxes){
@@ -45,6 +47,7 @@ public class DifferentElementsPage {
         }
     }
 
+    @Step
     public void setSelect(Enum element, Boolean bool){
         if (element.getDeclaringClass().toString().matches(".*\\.enums\\.CheckBoxes$")) {
             boolean exist = false;
@@ -86,6 +89,7 @@ public class DifferentElementsPage {
 
     }
 
+    @Step
     public void checkSelected(Enum element){
         if (CheckBoxes.getCheckBoxesLabels().contains(element.toString())) {
             for (SelenideElement checkBox : checkBoxes) {
@@ -103,6 +107,7 @@ public class DifferentElementsPage {
         }
     }
 
+    @Step
     public void checkUnselected(Enum element) {
         if (CheckBoxes.getCheckBoxesLabels().contains(element.toString())) {
             for (SelenideElement checkBox : checkBoxes) {
@@ -120,6 +125,7 @@ public class DifferentElementsPage {
         }
     }
 
+    @Step
     public void chooseColor(String color){
         selectElement.selectOption(color);
     }

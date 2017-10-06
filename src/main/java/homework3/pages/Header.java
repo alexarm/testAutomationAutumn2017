@@ -8,6 +8,7 @@ import homework3.enums.ServiceMenus;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.Assert;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -15,9 +16,6 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 
-/**
- * Created by aleksandrarmensin on 20.09.17.
- */
 public class Header {
 
     @FindBy(css = ".fa-user")
@@ -38,6 +36,7 @@ public class Header {
     @FindBy(css = ".dropdown-menu>li>a")
     private ElementsCollection serviceMenus;
 
+    @Step
     public void login(String username, String password){
         userIcon.should(visible).click();
         loginInput.sendKeys(username);
@@ -49,6 +48,7 @@ public class Header {
 
     }
 
+    @Step
     public void open(Enum<ServiceMenus> page){
         for(SelenideElement serviceMenu: serviceMenus){
             if (serviceMenu.innerText().equalsIgnoreCase(page.toString())){
@@ -62,6 +62,7 @@ public class Header {
         $("a[href='index.htm']").click();
     }
 
+    @Step
     public void checkServiceMenu(){
         serviceToggle.click();
         for (SelenideElement serviceMenu: serviceMenus){

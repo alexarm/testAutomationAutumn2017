@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,7 @@ public class RightBar {
     @FindBy(css = ".panel-body-list.logs>li")
     private ElementsCollection logs;
 
+    @Step
     public void checkLog(String element, Boolean ... bool){
 
         Boolean result = false;

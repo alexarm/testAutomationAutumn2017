@@ -40,6 +40,7 @@ public class SeleniumTest {
     private static final String LOG_RAW_X_PATH = "//ul[contains(@class, 'logs')]/li[1]";
 
     private String driverPath = "chromedriver";
+    private String geckoPath = "geckpdriver";
 
 
     @BeforeMethod

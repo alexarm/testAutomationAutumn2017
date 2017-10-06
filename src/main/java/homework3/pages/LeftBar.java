@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import homework3.enums.ServiceMenus;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.codeborne.selenide.Condition.text;
 
@@ -16,6 +17,7 @@ public class LeftBar {
     @FindBy(css = ".sub>li>a>p>span")
     private ElementsCollection serviceMenus;
 
+    @Step
     public void checkServiceMenu(){
         serviceToggle.click();
 

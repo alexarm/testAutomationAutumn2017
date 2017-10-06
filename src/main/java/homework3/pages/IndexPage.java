@@ -4,14 +4,12 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import homework3.enums.TextsUnderPictures;
-import homework3.enums.Users;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.page;
 import static homework3.enums.TextsAbove.*;
 import static homework3.enums.Users.USER1;
@@ -28,6 +26,7 @@ public class IndexPage{
     public void open(){
         Selenide.open("/");
     }
+
 
     public void checkLogin(){
         $(".profile-photo span").shouldBe(visible).should(text(USER1.name));
