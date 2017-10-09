@@ -15,7 +15,7 @@ public class RightBar {
     private ElementsCollection logs;
 
     @Step
-    public void checkLog(String element, Boolean ... bool){
+    public void checkLog(Enum element, Boolean ... bool){
 
         Boolean result = false;
 
@@ -23,7 +23,7 @@ public class RightBar {
 
         if (bool.length > 0){
             for(SelenideElement log: logs){
-                if(log.getText().contains(element + ": condition changed to " + bool[0].toString())) {
+                if(log.getText().contains(element.toString() + ": condition changed to " + bool[0].toString())) {
                     result = true;
                 }
             }
@@ -31,7 +31,7 @@ public class RightBar {
         }
         else{
             for(SelenideElement log: logs){
-                if(log.getText().contains(": value changed to " + element)) {
+                if(log.getText().contains(": value changed to " + element.toString())) {
                     result = true;
                 }
             }

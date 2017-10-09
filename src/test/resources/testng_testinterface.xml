@@ -4,6 +4,7 @@
     <test name="Test Interface Elements" >
         <classes>
             <class name="homework3.InterfaceElementsTests" />
+            <class name="homework3.SlidersTest" />
         </classes>
     </test>
 </suite>

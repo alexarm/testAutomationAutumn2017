@@ -49,9 +49,9 @@ public class DifferentElementsPage {
 
     @Step
     public void setSelect(Enum element, Boolean bool){
+        boolean exist = false;
+        SelenideElement setElement = null;
         if (element.getDeclaringClass().toString().matches(".*\\.enums\\.CheckBoxes$")) {
-            boolean exist = false;
-            SelenideElement setElement = null;
             for (SelenideElement checkBox : checkBoxes) {
                 if (checkBox.closest("label").text().equalsIgnoreCase(element.toString())) {
                     exist = true;
@@ -59,16 +59,8 @@ public class DifferentElementsPage {
                     break;
                 }
             }
-            if (exist){
-                setElement.setSelected(bool);
-            }
-            else {
-                throw new NullPointerException("Element to set not found");
-            }
         }
         else if (element.getDeclaringClass().toString().matches(".*\\.enums\\.RadioButtons$")){
-            boolean exist = false;
-            SelenideElement setElement = null;
             for (SelenideElement radioButton : radioButtons) {
                 if (radioButton.closest("label").text().equalsIgnoreCase(element.toString())) {
                     exist = true;
@@ -76,12 +68,12 @@ public class DifferentElementsPage {
                     break;
                 }
             }
-            if (exist){
-                setElement.setSelected(bool);
-            }
-            else {
-                throw new NullPointerException("Element to set not found");
-            }
+        }
+        else {
+            throw new NullPointerException("Element to set not found");
+        }
+        if (exist){
+            setElement.setSelected(bool);
         }
         else {
             throw new NullPointerException("Element to set not found");
@@ -105,6 +97,9 @@ public class DifferentElementsPage {
                 }
             }
         }
+        else {
+            throw new NullPointerException("Element to set not found");
+        }
     }
 
     @Step
@@ -122,6 +117,9 @@ public class DifferentElementsPage {
                     radioButton.shouldNotBe(selected);
                 }
             }
+        }
+        else {
+            throw new NullPointerException("Element to set not found");
         }
     }
 

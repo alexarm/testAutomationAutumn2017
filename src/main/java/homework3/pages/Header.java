@@ -30,6 +30,9 @@ public class Header {
     @FindBy(css = ".fa-sign-in")
     private SelenideElement signInButton;
 
+    @FindBy(css = ".m-l8>li")
+    private ElementsCollection headerMenus;
+
     @FindBy(css = ".dropdown a[href='page1.htm']")
     private SelenideElement serviceToggle;
 
@@ -44,22 +47,23 @@ public class Header {
         signInButton.should(visible).click();
     }
 
-    public void openMain(Enum<HeaderMenu> page){
-
-    }
-
     @Step
-    public void open(Enum<ServiceMenus> page){
-        for(SelenideElement serviceMenu: serviceMenus){
-            if (serviceMenu.innerText().equalsIgnoreCase(page.toString())){
-                serviceToggle.click();
-                serviceMenu.click();
+    public void open(Enum... pages){
+        if (pages.length == 1){
+            for (SelenideElement headerMenu: headerMenus){
+                if (headerMenu.innerText().equalsIgnoreCase(pages[0].toString())){
+                    headerMenu.click();
+                }
             }
         }
-    }
-
-    public void openIndexPage(){
-        $("a[href='index.htm']").click();
+        else {
+            for (SelenideElement serviceMenu : serviceMenus) {
+                if (serviceMenu.innerText().equalsIgnoreCase(pages[1].toString())) {
+                    serviceToggle.click();
+                    serviceMenu.click();
+                }
+            }
+        }
     }
 
     @Step

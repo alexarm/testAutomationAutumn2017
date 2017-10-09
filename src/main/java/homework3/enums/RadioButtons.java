@@ -7,16 +7,14 @@ import java.util.ArrayList;
 import static com.codeborne.selenide.Selenide.*;
 
 public enum RadioButtons{
-    GOLD($(".label-radio:nth-of-type(1) input"), "Gold"),
-    SILVER($(".label-radio:nth-of-type(2) input"), "Silver"),
-    BRONZE($(".label-radio:nth-of-type(3) input"), "Bronze"),
-    SELEN($(".label-radio:nth-of-type(4) input"), "Selen");
+    GOLD("Gold"),
+    SILVER("Silver"),
+    BRONZE("Bronze"),
+    SELEN("Selen");
 
-    public SelenideElement radio;
     public String label;
 
-    RadioButtons(SelenideElement radio, String label) {
-        this.radio = radio;
+    RadioButtons(String label) {
         this.label = label;
     }
 

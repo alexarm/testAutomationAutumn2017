@@ -23,4 +23,9 @@ public enum Colors {
 
         return colors;
     }
+
+    @Override
+    public String toString() {
+        return color;
+    }
 }
