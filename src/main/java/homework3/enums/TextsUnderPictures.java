@@ -14,13 +14,11 @@ public enum TextsUnderPictures {
         this.text = text;
     }
 
-    public static ArrayList<String> getTexts(){
+    public static ArrayList<String> getTexts() {
         ArrayList<String> texts = new ArrayList<String>();
-
-        for (int i = 0; i < TextsUnderPictures.values().length; i++){
+        for (int i = 0; i < TextsUnderPictures.values().length; i++) {
             texts.add(TextsUnderPictures.values()[i].text);
         }
-
         return texts;
     }
 

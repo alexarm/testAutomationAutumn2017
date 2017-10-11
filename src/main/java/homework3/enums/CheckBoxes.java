@@ -1,10 +1,6 @@
 package homework3.enums;
 
-import com.codeborne.selenide.SelenideElement;
-
 import java.util.ArrayList;
-
-import static com.codeborne.selenide.Selenide.*;
 
 public enum CheckBoxes {
     WATER("Water"),
@@ -19,13 +15,11 @@ public enum CheckBoxes {
         this.label = label;
     }
 
-    public static ArrayList<String> getCheckBoxesLabels(){
+    public static ArrayList<String> getCheckBoxesLabels() {
         ArrayList<String> labels = new ArrayList<String>();
-
-        for (int i = 0; i < CheckBoxes.values().length; i++){
+        for (int i = 0; i < CheckBoxes.values().length; i++) {
             labels.add(CheckBoxes.values()[i].label);
         }
-
         return labels;
     }
 

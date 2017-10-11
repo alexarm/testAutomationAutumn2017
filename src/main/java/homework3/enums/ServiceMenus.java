@@ -16,13 +16,11 @@ public enum ServiceMenus {
         this.menuName = menuName;
     }
 
-    public static ArrayList<String> getMenuNames(){
+    public static ArrayList<String> getMenuNames() {
         ArrayList<String> names = new ArrayList<String>();
-
-        for (int i = 0; i < ServiceMenus.values().length; i++){
+        for (int i = 0; i < ServiceMenus.values().length; i++) {
             names.add(ServiceMenus.values()[i].menuName);
         }
-
         return names;
     }
 

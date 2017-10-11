@@ -8,7 +8,6 @@ public enum HeaderMenu {
 
     public String page;
 
-
     HeaderMenu(String page) {
         this.page = page;
     }

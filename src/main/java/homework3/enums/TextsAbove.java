@@ -15,6 +15,6 @@ public enum TextsAbove {
 
     @Override
     public String toString() {
-        return  text;
+        return text;
     }
 }

@@ -1,9 +1,7 @@
 package homework3;
 
-
 import com.codeborne.selenide.Selenide;
 import homework3.pages.DatesPage;
-import homework3.pages.DifferentElementsPage;
 import homework3.pages.Header;
 import homework3.pages.IndexPage;
 import homework3.util.AllureAttachmentListener;
@@ -16,33 +14,29 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.page;
 import static homework3.enums.HeaderMenu.SERVICE;
 import static homework3.enums.Ranges.*;
-import static homework3.enums.Ranges.LEFT_TEST;
-import static homework3.enums.Ranges.RIGHT_TEST;
 import static homework3.enums.ServiceMenus.DATES;
 import static homework3.enums.Users.USER1;
 
 @Listeners(AllureAttachmentListener.class)
-public class SlidersTest extends InitTest{
+public class SlidersTest extends InitTest {
 
     private IndexPage indexPage;
-    private DifferentElementsPage differentElementsPage;
     private DatesPage datesPage;
     private Header header;
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         indexPage = page(IndexPage.class);
-        differentElementsPage = page(DifferentElementsPage.class);
         datesPage = page(DatesPage.class);
         header = page(Header.class);
     }
 
     @Test
-    public void testCorrectSlidersWork(){
+    public void testCorrectSlidersWork() {
         //0. Open and login IndexPage
         indexPage.open();
         header.login(USER1.username, USER1.password);
-        indexPage.checkLogin();
+        header.checkLogin();
 
         //1. Open Dates Page
         header.open(SERVICE, DATES);
@@ -62,7 +56,7 @@ public class SlidersTest extends InitTest{
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         Selenide.close();
     }
 }

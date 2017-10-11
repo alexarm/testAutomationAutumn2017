@@ -14,13 +14,11 @@ public enum Colors {
         this.color = color;
     }
 
-    public static ArrayList<String> getColors(){
+    public static ArrayList<String> getColors() {
         ArrayList<String> colors = new ArrayList<String>();
-
-        for (int i = 0; i < Colors.values().length; i++){
+        for (int i = 0; i < Colors.values().length; i++) {
             colors.add(Colors.values()[i].color);
         }
-
         return colors;
     }
 

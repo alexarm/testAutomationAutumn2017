@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Step;
 
-import static com.codeborne.selenide.Condition.text;
-
 public class LeftBar {
 
     @FindBy(css = ".sub-menu")
@@ -18,12 +16,11 @@ public class LeftBar {
     private ElementsCollection serviceMenus;
 
     @Step
-    public void checkServiceMenu(){
+    public void checkServiceMenu() {
         serviceToggle.click();
 
-        for (SelenideElement serviceMenu: serviceMenus){
+        for (SelenideElement serviceMenu : serviceMenus) {
             Assert.assertTrue(ServiceMenus.getMenuNames().contains(serviceMenu.getText().toLowerCase()));
         }
-
     }
 }

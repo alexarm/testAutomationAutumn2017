@@ -1,52 +1,48 @@
 package homework3;
 
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.webdriver.WebDriverFactory;
-import homework3.enums.Ranges;
-import homework3.enums.ServiceMenus;
-import homework3.pages.DatesPage;
 import homework3.pages.DifferentElementsPage;
 import homework3.pages.Header;
 import homework3.pages.IndexPage;
 import homework3.util.AllureAttachmentListener;
 import homework3.util.InitTest;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
-import static homework3.enums.CheckBoxes.*;
-import static homework3.enums.Colors.*;
+import static homework3.enums.CheckBoxes.WATER;
+import static homework3.enums.CheckBoxes.WIND;
+import static homework3.enums.Colors.YELLOW;
 import static homework3.enums.HeaderMenu.HOME;
 import static homework3.enums.HeaderMenu.SERVICE;
-import static homework3.enums.RadioButtons.*;
-import static homework3.enums.Ranges.*;
-import static homework3.enums.ServiceMenus.*;
-import static homework3.enums.Users.*;
+import static homework3.enums.RadioButtons.SELEN;
+import static homework3.enums.ServiceMenus.DIFFERENT_ELEMENTS;
+import static homework3.enums.Users.USER1;
 
 @Listeners(AllureAttachmentListener.class)
-public class InterfaceElementsTests extends InitTest{
+public class InterfaceElementsTests extends InitTest {
 
     private IndexPage indexPage;
     private DifferentElementsPage differentElementsPage;
-    private DatesPage datesPage;
     private Header header;
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         indexPage = page(IndexPage.class);
         differentElementsPage = page(DifferentElementsPage.class);
-        datesPage = page(DatesPage.class);
         header = page(Header.class);
     }
 
     @Test
-    public void testCorrectUserInterfaceWork(){
+    public void testCorrectUserInterfaceWork() {
 
         //0. Open and login IndexPage
         indexPage.open();
         header.open(HOME);
         header.login(USER1.username, USER1.password);
-        indexPage.checkLogin();
+        header.checkLogin();
 
         //1. Check interface on Index Page
         indexPage.checkInterface();
@@ -60,34 +56,34 @@ public class InterfaceElementsTests extends InitTest{
         differentElementsPage.checkElements();
 
         //4. Check correct checkboxes work
-        differentElementsPage.setSelect(WATER,true);
-        differentElementsPage.checkSelected(WATER);
+        differentElementsPage.setSelectCheckBox(WATER, true);
+        differentElementsPage.checkSelectedCheckBox(WATER);
         differentElementsPage.rightBar.checkLog(WATER, true);
-        differentElementsPage.setSelect(WIND, true);
-        differentElementsPage.checkSelected(WIND);
+        differentElementsPage.setSelectCheckBox(WIND, true);
+        differentElementsPage.checkSelectedCheckBox(WIND);
         differentElementsPage.rightBar.checkLog(WIND, true);
 
         //5. Check correct radiobuttons work
-        differentElementsPage.setSelect(SELEN, true);
-        differentElementsPage.checkSelected(SELEN);
+        differentElementsPage.setSelectRadiobutton(SELEN, true);
+        differentElementsPage.checkSelectedRadiobutton(SELEN);
         differentElementsPage.rightBar.checkLog(SELEN);
 
         //6. Check correct dropdown work
-        differentElementsPage.chooseColor(YELLOW.color);
+        differentElementsPage.chooseColor(YELLOW);
         differentElementsPage.rightBar.checkLog(YELLOW);
 
         //7. Check log field
-        differentElementsPage.setSelect(WATER,false);
-        differentElementsPage.checkUnselected(WATER);
+        differentElementsPage.setSelectCheckBox(WATER, false);
+        differentElementsPage.checkUnselectedCheckBox(WATER);
         differentElementsPage.rightBar.checkLog(WATER, false);
-        differentElementsPage.setSelect(WIND,false);
-        differentElementsPage.checkUnselected(WIND);
+        differentElementsPage.setSelectCheckBox(WIND, false);
+        differentElementsPage.checkUnselectedCheckBox(WIND);
         differentElementsPage.rightBar.checkLog(WIND, false);
 
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         Selenide.close();
     }
 
