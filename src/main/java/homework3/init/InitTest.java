@@ -1,4 +1,4 @@
-package homework3.util;
+package homework3.init;
 
 import com.codeborne.selenide.Configuration;
 

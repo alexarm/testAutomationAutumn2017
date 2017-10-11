@@ -1,4 +1,4 @@
-package homework3.util;
+package homework3.listeners;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
