@@ -1,18 +1,17 @@
 package homework3;
 
 import com.codeborne.selenide.Selenide;
+import homework3.init.InitTest;
+import homework3.listeners.AllureAttachmentListener;
 import homework3.pages.DatesPage;
 import homework3.pages.Header;
 import homework3.pages.IndexPage;
-import homework3.listeners.AllureAttachmentListener;
-import homework3.init.InitTest;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.page;
-import static homework3.enums.HeaderMenu.SERVICE;
 import static homework3.enums.Ranges.*;
 import static homework3.enums.ServiceMenus.DATES;
 import static homework3.enums.Users.USER1;
@@ -39,7 +38,7 @@ public class SlidersTest extends InitTest {
         header.checkLogin();
 
         //1. Open Dates Page
-        header.open(SERVICE, DATES);
+        header.open(DATES);
 
         //2. Check slider work
         datesPage.setSliders(MIN.range, MAX.range);

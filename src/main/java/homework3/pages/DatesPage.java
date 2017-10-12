@@ -19,7 +19,7 @@ public class DatesPage {
     @FindBy(css = ".ui-slider")
     private SelenideElement sliderTrack;
 
-    @Step
+    @Step("Set sliders")
     public void setSliders(int leftValue, int rightValue) {
 
         if (leftValue > Integer.parseInt($(".ui-slider-handle:nth-of-type(2)>span").getText())) {
@@ -33,7 +33,7 @@ public class DatesPage {
         }
     }
 
-    @Step
+    @Step("Check Range on Dates Page is correct")
     public void checkRange(int leftValue, int rightValue) {
         leftHandle.should(text(String.valueOf(leftValue)));
         rightHandle.should(text(String.valueOf(rightValue)));

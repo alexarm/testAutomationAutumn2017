@@ -33,21 +33,21 @@ public class IndexPage {
         Selenide.open("/");
     }
 
-    @Step
+    @Step("Check pictures on Index Page")
     public void checkPictures() {
         for (SelenideElement icon : mainIcons) {
             icon.should(visible);
         }
     }
 
-    @Step
+    @Step("Check texts under pictures on Index Page")
     public void checkTextsUnderPictures() {
         for (SelenideElement text : textsUnderPictures) {
             Assert.assertTrue(TextsUnderPictures.getTexts().contains(text.getText()));
         }
     }
 
-    @Step
+    @Step("Check main texts on Index page")
     public void checkTextsAbove() {
         mainTitle.should(visible).should(text(MAIN_TITLE.text));
         mainTxt.should(visible).should(text(MAIN_TXT.text));

@@ -2,6 +2,7 @@ package homework3.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import homework3.enums.HeaderMenu;
 import homework3.enums.ServiceMenus;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
@@ -49,25 +50,26 @@ public class Header {
         loginText.shouldBe(visible).should(text(USER1.name));
     }
 
-    @Step
-    public void open(Enum... pages) {
-        if (pages.length == 1) {
-            for (SelenideElement headerMenu : headerMenus) {
-                if (headerMenu.innerText().equalsIgnoreCase(pages[0].toString())) {
-                    headerMenu.click();
-                }
-            }
-        } else {
-            for (SelenideElement serviceMenu : serviceMenus) {
-                if (serviceMenu.innerText().equalsIgnoreCase(pages[1].toString())) {
-                    serviceToggle.click();
-                    serviceMenu.click();
-                }
+    @Step("Open page")
+    public void open(HeaderMenu menu) {
+        for (SelenideElement headerMenu : headerMenus) {
+            if (headerMenu.innerText().equalsIgnoreCase(menu.toString())) {
+                headerMenu.click();
             }
         }
     }
 
-    @Step
+    @Step("Open page")
+    public void open(ServiceMenus menu) {
+        for (SelenideElement serviceMenu : serviceMenus) {
+            if (serviceMenu.innerText().equalsIgnoreCase(menu.toString())) {
+                serviceToggle.click();
+                serviceMenu.click();
+            }
+        }
+    }
+
+    @Step("Check Service Menu in header is correct")
     public void checkServiceMenu() {
         serviceToggle.click();
         for (SelenideElement serviceMenu : serviceMenus) {

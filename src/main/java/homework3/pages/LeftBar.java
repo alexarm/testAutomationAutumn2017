@@ -15,10 +15,9 @@ public class LeftBar {
     @FindBy(css = ".sub>li>a>p>span")
     private ElementsCollection serviceMenus;
 
-    @Step
+    @Step("Check Service Menu in Left section is correct")
     public void checkServiceMenu() {
         serviceToggle.click();
-
         for (SelenideElement serviceMenu : serviceMenus) {
             Assert.assertTrue(ServiceMenus.getMenuNames().contains(serviceMenu.getText().toLowerCase()));
         }

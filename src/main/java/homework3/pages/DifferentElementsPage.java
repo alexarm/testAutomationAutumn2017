@@ -28,7 +28,7 @@ public class DifferentElementsPage {
     @FindBy(css = "select > option")
     private ElementsCollection selectOptions;
 
-    @Step
+    @Step("Check all elements on Different Elements Page is visible and correct")
     public void checkElements() {
         checkBoxes.shouldHaveSize(4);
         for (SelenideElement checkBox : checkBoxes) {
@@ -46,32 +46,32 @@ public class DifferentElementsPage {
         }
     }
 
-    @Step
-    public void setSelectCheckBox(CheckBoxes checkBox, Boolean bool) {
+    @Step("Set select CheckBox")
+    public void setSelect(CheckBoxes checkBox, Boolean bool) {
         checkBoxes.get(checkBox.ordinal()).setSelected(bool);
     }
 
-    @Step
-    public void checkSelectedCheckBox(CheckBoxes checkBox) {
-        checkBoxes.get(checkBox.ordinal()).shouldBe(selected);
-    }
-
-    @Step
-    public void checkUnselectedCheckBox(CheckBoxes checkBox) {
-        checkBoxes.get(checkBox.ordinal()).shouldNotBe(selected);
-    }
-
-    @Step
-    public void setSelectRadiobutton(RadioButtons radio, Boolean bool) {
+    @Step("Set select Radio")
+    public void setSelect(RadioButtons radio, Boolean bool) {
         radioButtons.get(radio.ordinal()).setSelected(bool);
     }
 
-    @Step
-    public void checkSelectedRadiobutton(RadioButtons radioButton) {
+    @Step("Check selected CheckBox")
+    public void checkSelected(CheckBoxes checkBox) {
+        checkBoxes.get(checkBox.ordinal()).shouldBe(selected);
+    }
+
+    @Step("Check selected Radio")
+    public void checkSelected(RadioButtons radioButton) {
         radioButtons.get(radioButton.ordinal()).shouldBe(selected);
     }
 
-    @Step
+    @Step("Check unselected CheckBox")
+    public void checkUnselected(CheckBoxes checkBox) {
+        checkBoxes.get(checkBox.ordinal()).shouldNotBe(selected);
+    }
+
+    @Step("Choose Dropdown color value")
     public void chooseColor(Colors color) {
         selectElement.selectOption(color.toString());
     }

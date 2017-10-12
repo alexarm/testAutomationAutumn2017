@@ -9,5 +9,4 @@ public abstract class InitTest {
         Configuration.browserSize = "1440x900";
         Configuration.baseUrl = "https://jdi-framework.github.io/tests";
     }
-
 }

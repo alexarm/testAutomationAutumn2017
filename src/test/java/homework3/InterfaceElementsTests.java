@@ -1,11 +1,11 @@
 package homework3;
 
 import com.codeborne.selenide.Selenide;
+import homework3.init.InitTest;
+import homework3.listeners.AllureAttachmentListener;
 import homework3.pages.DifferentElementsPage;
 import homework3.pages.Header;
 import homework3.pages.IndexPage;
-import homework3.listeners.AllureAttachmentListener;
-import homework3.init.InitTest;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -16,7 +16,6 @@ import static homework3.enums.CheckBoxes.WATER;
 import static homework3.enums.CheckBoxes.WIND;
 import static homework3.enums.Colors.YELLOW;
 import static homework3.enums.HeaderMenu.HOME;
-import static homework3.enums.HeaderMenu.SERVICE;
 import static homework3.enums.RadioButtons.SELEN;
 import static homework3.enums.ServiceMenus.DIFFERENT_ELEMENTS;
 import static homework3.enums.Users.USER1;
@@ -52,20 +51,20 @@ public class InterfaceElementsTests extends InitTest {
         indexPage.leftBar.checkServiceMenu();
 
         //3. Open page with different elements and check interface
-        header.open(SERVICE, DIFFERENT_ELEMENTS);
+        header.open(DIFFERENT_ELEMENTS);
         differentElementsPage.checkElements();
 
         //4. Check correct checkboxes work
-        differentElementsPage.setSelectCheckBox(WATER, true);
-        differentElementsPage.checkSelectedCheckBox(WATER);
+        differentElementsPage.setSelect(WATER, true);
+        differentElementsPage.checkSelected(WATER);
         differentElementsPage.rightBar.checkLog(WATER, true);
-        differentElementsPage.setSelectCheckBox(WIND, true);
-        differentElementsPage.checkSelectedCheckBox(WIND);
+        differentElementsPage.setSelect(WIND, true);
+        differentElementsPage.checkSelected(WIND);
         differentElementsPage.rightBar.checkLog(WIND, true);
 
         //5. Check correct radiobuttons work
-        differentElementsPage.setSelectRadiobutton(SELEN, true);
-        differentElementsPage.checkSelectedRadiobutton(SELEN);
+        differentElementsPage.setSelect(SELEN, true);
+        differentElementsPage.checkSelected(SELEN);
         differentElementsPage.rightBar.checkLog(SELEN);
 
         //6. Check correct dropdown work
@@ -73,11 +72,11 @@ public class InterfaceElementsTests extends InitTest {
         differentElementsPage.rightBar.checkLog(YELLOW);
 
         //7. Check log field
-        differentElementsPage.setSelectCheckBox(WATER, false);
-        differentElementsPage.checkUnselectedCheckBox(WATER);
+        differentElementsPage.setSelect(WATER, false);
+        differentElementsPage.checkUnselected(WATER);
         differentElementsPage.rightBar.checkLog(WATER, false);
-        differentElementsPage.setSelectCheckBox(WIND, false);
-        differentElementsPage.checkUnselectedCheckBox(WIND);
+        differentElementsPage.setSelect(WIND, false);
+        differentElementsPage.checkUnselected(WIND);
         differentElementsPage.rightBar.checkLog(WIND, false);
 
     }
