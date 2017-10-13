@@ -38,7 +38,7 @@ public class Header {
     @FindBy(css = ".dropdown-menu>li>a")
     private ElementsCollection serviceMenus;
 
-    @Step
+    @Step("Login")
     public void login(String username, String password) {
         userIcon.should(visible).click();
         loginInput.sendKeys(username);
